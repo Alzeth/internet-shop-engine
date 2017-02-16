@@ -12,13 +12,13 @@ Product.prototype.getName = function(){
   return this.name;
 }
 Product.prototype.setPrice = function(){
-  console.log(this.price + " setPrice");
+  console.log(this.name + " setPrice");
 }
 Product.prototype.getPrice = function(){
   return this.price;
 }
 Product.prototype.setProducer = function(){
-  console.log(this.producer + " setProducer");
+  console.log(this.name + " setProducer");
 }
 Product.prototype.getProducer = function(){
   return this.producer;
@@ -51,11 +51,12 @@ Cloth.prototype.setPrint = function(){
 var ShirtLarge = new Cloth("Shirt", "black", "L", "SixEyes");
 var PantsSmall = new Cloth("Pants", "black", "S", "Logo");
 
-function Cloth(name, color, size, print){
+
+function Linens(name, color, size, material){
   this.name = name;
   this.color = color;
   this.size = size;
-  this.print = print;
+  this.material = material;
 }
 Cloth.prototype.setSize = function(){
   console.log(this.name + " setSize");
@@ -70,8 +71,8 @@ Cloth.prototype.setColor = function(){
   console.log(this.name + " setColor");
 }
 Cloth.prototype.setPrint = function(){
-  console.log(this.name + " setPrint");
+  console.log(this.name + " setMaterial");
 }
 
-var ShirtLarge = new Cloth("Shirt", "black", "L", "SixEyes");
-var PantsSmall = new Cloth("Pants", "black", "S", "Logo");
+var PillowCase = new Linens("Pillowcase", "white", "50sm*70sm", "cotton");
+var BedSheet = new Linens("Bedsheet", "beige", "Standart", "cotton");
