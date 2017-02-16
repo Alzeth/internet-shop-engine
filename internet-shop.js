@@ -76,3 +76,25 @@ Cloth.prototype.setPrint = function(){
 
 var PillowCase = new Linens("Pillowcase", "white", "50sm*70sm", "cotton");
 var BedSheet = new Linens("Bedsheet", "beige", "Standart", "cotton");
+
+
+function Dishes(name, color, material){
+  this.name = name;
+  this.color = color;
+  this.material = material;
+}
+Cloth.prototype.setSize = function(){
+  console.log(this.name + " setSize");
+}
+Cloth.prototype.setName = function(){
+  console.log(this.name + " setName");
+}
+Cloth.prototype.getName = function(){
+  return this.name;
+}
+Cloth.prototype.setPrint = function(){
+  console.log(this.name + " setMaterial");
+}
+
+var Cup = new Dishes("Cup", "red", "ceramics");
+var Plate = new Dishes("Plate", "seaShell", "porcelain");
