@@ -24,6 +24,15 @@ Product.prototype.getProducer = function(){
   return this.producer;
 }
 
+/*
+function Cloth(name, color, size, print){
+    Product.call(this, name, price, producer)
+}
+Cloth.size = i;
+Cloth.prototype = Object.create(Product.prototype)
+*/
+
+
 //Other constuctor functions for other products
 
 function Cloth(name, color, size, print){
