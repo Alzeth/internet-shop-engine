@@ -77,9 +77,6 @@ Linens.prototype.getName = function(){
 Linens.prototype.setColor = function(){
   console.log(this.name + " setColor");
 }
-Linens.prototype.setPrint = function(){
-  console.log(this.name + " setMaterial");
-}
 
 var PillowCase = new Linens("Pillowcase", "$6", "Ottavapillows", "white", "50sm*70sm", "cotton");
 var BedSheet = new Linens("Bedsheet", "$12", "Torontolinens", "beige", "Standart", "cotton");
@@ -102,9 +99,6 @@ Dishes.prototype.setName = function(){
 }
 Dishes.prototype.getName = function(){
   return this.name;
-}
-Dishes.prototype.setPrint = function(){
-  console.log(this.name + " setMaterial");
 }
 
 var Cup = new Dishes("Cup", "$3", "Chineseporcelain", "red", "ceramics");
