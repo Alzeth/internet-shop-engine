@@ -1,12 +1,10 @@
 //global prototype Product
-var Product{
-  constructor: function Product(name, price, producer){
+Product = function (name, price, producer){
     this.name = name;
     this.price = price;
     this.producer = producer;
     return this;
   }
-}
 Product.prototype.setName = function(){
   console.log(this.name + " setName");
 }
@@ -28,13 +26,14 @@ Product.prototype.getProducer = function(){
 
 
 //Other constuctor functions for other products
-var Cloth = Object.create(Product);
-Cloth.constructor = function (name, price, producer, size, print) {
-  Product.constructor.apply(this, arguments);
+Cloth = function (name, price, producer, size, print) {
+  Product.apply(this, arguments);
   this.size = size;
   this.print = print;
   return this;
 }
+Cloth.prototype = Object.create(Product.prototype);
+Cloth.prototype.constructor = Cloth;
 
 Cloth.prototype.setSize = function(){
   console.log(this.name + " setSize");
@@ -52,32 +51,33 @@ Cloth.prototype.setPrint = function(){
   console.log(this.name + " setPrint");
 }
 
-var ShirtLarge = new Cloth("Shirt", "$5", "Versace", "L", "SixEyes");
-var PantsSmall = new Cloth("Pants", "$10", "D&G", "S", "Logo");
+ShirtLarge = new Cloth("Shirt", "$5", "Versace", "L", "SixEyes");
+PantsSmall = new Cloth("Pants", "$10", "D&G", "S", "Logo");
 
 
-var Linens = Object.create(Product);
-Linens.constructor = function (name, price, producer, color, size, material) {
-  Product.constructor.apply(this, arguments);
+Linens = function (name, price, producer, color, size, material) {
+  Product.apply(this, arguments);
   this.color = color;
   this.size = size;
   this.material = material;
   return this;
 }
+Linens.prototype = Object.create(Product.prototype);
+Linens.constructor = Linens;
 
-Cloth.prototype.setSize = function(){
+Linens.prototype.setSize = function(){
   console.log(this.name + " setSize");
 }
-Cloth.prototype.setName = function(){
+Linens.prototype.setName = function(){
   console.log(this.name + " setName");
 }
-Cloth.prototype.getName = function(){
+Linens.prototype.getName = function(){
   return this.name;
 }
-Cloth.prototype.setColor = function(){
+Linens.prototype.setColor = function(){
   console.log(this.name + " setColor");
 }
-Cloth.prototype.setPrint = function(){
+Linens.prototype.setPrint = function(){
   console.log(this.name + " setMaterial");
 }
 
@@ -85,24 +85,25 @@ var PillowCase = new Linens("Pillowcase", "$6", "Ottavapillows", "white", "50sm*
 var BedSheet = new Linens("Bedsheet", "$12", "Torontolinens", "beige", "Standart", "cotton");
 
 
-var Dishes = Object.create(Product);
-Dishes.constructor = function (name, price, producer, color, material) {
-  Product.constructor.apply(this, arguments);
+Dishes = function (name, price, producer, color, material) {
+  Product.apply(this, arguments);
   this.color = color;
   this.material = material;
   return this;
 }
+Dishes.prototype = Object.create(Product.prototype);
+Dishes.constructor = Dishes;
 
-Cloth.prototype.setSize = function(){
+Dishes.prototype.setSize = function(){
   console.log(this.name + " setSize");
 }
-Cloth.prototype.setName = function(){
+Dishes.prototype.setName = function(){
   console.log(this.name + " setName");
 }
-Cloth.prototype.getName = function(){
+Dishes.prototype.getName = function(){
   return this.name;
 }
-Cloth.prototype.setPrint = function(){
+Dishes.prototype.setPrint = function(){
   console.log(this.name + " setMaterial");
 }
 
