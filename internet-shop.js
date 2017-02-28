@@ -120,3 +120,40 @@ Dishes.prototype.getName = function(){
 
 var Cup = new Dishes("Cup", "$3", "Chineseporcelain", "red", "ceramics");
 var Plate = new Dishes("Plate", "$4", "Chineseporcelain", "seaShell", "porcelain");
+
+
+
+// class example
+/*
+function Fruit(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+Fruit.search = function(pattern) {
+  var re = new RegExp(pattern);
+  Fruit.fruits.forEach(function(fruit) {
+    for (var key in fruit) {
+      if (fruit[key].search(re) >= 0) {
+        Fruit.filtered.push(fruit);
+      }
+    }
+  })
+}
+
+Fruit.fruits = [];
+Fruit.filtered = [];
+
+Fruit.create = function(name, color) {
+  var fruit = new Fruit(name, color);
+  Fruit.fruits.push(fruit);
+  return fruit;
+}
+
+Fruit.create("apple", "gold");
+Fruit.create("apple", "green");
+Fruit.create("banana", "gold");
+Fruit.search("app")
+
+console.log(Fruit.filtered)
+*/
