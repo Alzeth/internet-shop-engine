@@ -3,7 +3,6 @@ Product = function (name, price, producer){
     this.name = name;
     this.price = price;
     this.producer = producer;
-    this.filtered = filtered;
   }
   Product.search = function(pattern) {
   var re = new RegExp(pattern);
