@@ -5,9 +5,9 @@ Product = function (name, price, producer){
     this.producer = producer;
     this.products = [ShirtLarge, PantsSmall, PillowCase, BedSheet, Cup, Plate];
     this.filtered = filtered;
-    Product.search = function search() {
+    Product.search = function () {
       var arrstr = products.toString();
-      filtered = arrstr.match(/prompt('What do you want to find?')/g);
+      filtered = arrstr.match(/ShirtLarge/g);
       console.log(filtered);
     }
 
