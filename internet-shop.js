@@ -3,18 +3,26 @@ Product = function (name, price, producer){
     this.name = name;
     this.price = price;
     this.producer = producer;
-    this.products = [ShirtLarge, PantsSmall, PillowCase, BedSheet, Cup, Plate];
     this.filtered = filtered;
-    Product.search = function () {
-      var arrstr = products.toString();
-      filtered = arrstr.match(/ShirtLarge/g);
-      console.log(filtered);
-    }
-
   }
+  Product.search = function(pattern) {
+  var re = new RegExp(pattern);
+  Product.products.forEach(function(product)){
+    for (var key in product) {
+      if (product[key].search(re) >= 0) {
+        Product.filtered.push(product);
+      }
+    }
+  }
+}
+Product.products = [];
+Product.filtered = [];
 
 
-Product.prototype.setName = function(){
+
+
+
+/*Product.prototype.setName = function(){
   console.log(this.name + " setName");
 }
 Product.prototype.getName = function(){
@@ -31,7 +39,7 @@ Product.prototype.setProducer = function(){
 }
 Product.prototype.getProducer = function(){
   return this.producer;
-}
+}*/
 
 
 //Other constuctor functions for other products
@@ -59,8 +67,11 @@ Cloth.prototype.setPrint = function(){
   console.log(this.name + " setPrint");
 }
 
-ShirtLarge = new Cloth("Shirt", "$5", "Versace", "L", "SixEyes");
-PantsSmall = new Cloth("Pants", "$10", "D&G", "S", "Logo");
+ShirtLarge.create = function(){
+  var ShirtLarge = new Cloth("Shirt", "$5", "Versace", "L", "SixEyes");
+  Product.products.push(Shirt);
+}
+// PantsSmall = new Cloth("Pants", "$10", "D&G", "S", "Logo");
 
 
 Linens = function (name, price, producer, color, size, material) {
