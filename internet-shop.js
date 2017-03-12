@@ -32,7 +32,7 @@ Product.config = {
     }
 }
 
-Product.showProducts();
+
 
 
 
@@ -148,8 +148,8 @@ Product.products.push(Plate);
 
 
 
-
-console.log(result)
+Product.products.map();
+Product.showProducts();
 
 
 // class example
