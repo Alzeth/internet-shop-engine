@@ -1,0 +1,49 @@
+/*brand color #42bd77*/
+html, body{
+    font-family: 'El Messiri', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+.header-wrapper{
+    background-color: #ffffff;
+}
+.footer-wrapper{
+    background: url("../images/img-noise-100x100.png") repeat;
+}
+.scnd-footer{
+    background-color: #287347;
+}
+.main-wrapper>section{
+    background: url("../images/img-noise-100x100.png") repeat;
+}
+
+/*-----------HEADER-----------*/
+
+
+nav{
+    background-color: #42bd77;
+}
+
+/*-----------MAIN-----------*/
+
+#products, #products a{
+    color: #afafaf;
+}

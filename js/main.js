@@ -6,6 +6,8 @@ Product = function (name, price, producer){
 };
 Product.products = [];
 Product.filtered = [];
+
+//fabric method Search
 Product.search = function(pattern) {
     var re = new RegExp(pattern);
     Product.products.forEach(function(product){
@@ -17,22 +19,47 @@ Product.search = function(pattern) {
     })
 };
 
-Product.showProducts = function () {
-    var cards = Product.products.map(function (product) {
-        var result = Product.config.templates.productCard;
-        result.replace("{0}", product.name);
-        result.replace("{1}", product.price);
-        return result;
-    });
-    return cards;
+//next stage product prototype
+var Cloth = function (name, price, producer, size, print) {
+    Product.apply(this, arguments);
+    this.size = size;
+    this.print = print;
+};
+Cloth.create = (name, price, producer, size, print) => {
+    var product = new Cloth(name, price, producer);
+    Product.products.push(product);
+    return product;
 }
+// fabric method which shows products array in html
+Product.showProducts = function() {
+    var pattern = /:price|:name|:description/gi;
+
+    return Product.products.map((product) => {
+        var replaces = {
+            ":price": product.price,
+            ":name": product.name
+        }
+        return Product.config.templates.productCard.replace(pattern, (matched) => {
+            return replaces[matched]
+        })
+    })
+}
+ //config with html template
 Product.config = {
     templates: {
-        productCard: '<div><span class="productName">{0}</span><span>{1}</span></div>'
+        productCard: `
+<div class="prdctCard">
+    <a href="#"></a>
+    <a href="#" class="prdctName">:name</a>
+    <span class="prdctPrice">:price</span>
+    <button>Buy me</button>
+</div>`
     }
 }
 
-
+Cloth.create("Shirt", "$5", "Versace", "L", "SixEyes");
+Cloth.create("Pants", "$10", "D&G", "S", "Logo");
+Cloth.create("Shoes", "$15", "Fallen", "9", "Fallen");
 
 
 
@@ -57,11 +84,7 @@ Product.prototype.setName = function(){
 
 
 //Other constuctor functions for other products
-Cloth = function (name, price, producer, size, print) {
-    Product.apply(this, arguments);
-    this.size = size;
-    this.print = print;
-};
+
 Cloth.prototype = Object.create(Product.prototype);
 Cloth.prototype.constructor = Cloth;
 
@@ -130,59 +153,19 @@ Dishes.prototype.getName = function(){
 
 
 
-//Product.create = function(){
-var ShirtLarge = new Cloth("Shirt", "$5", "Versace", "L", "SixEyes");
-Product.products.push(ShirtLarge);
-var PantsSmall = new Cloth("Pants", "$10", "D&G", "S", "Logo");
-Product.products.push(PantsSmall);
-var PillowCase = new Linens("Pillowcase", "$6", "Ottavapillows", "white", "50sm*70sm", "cotton");
-Product.products.push(PillowCase);
-var BedSheet = new Linens("Bedsheet", "$12", "Torontolinens", "beige", "Standart", "cotton");
-Product.products.push(BedSheet);
-var Cup = new Dishes("Cup", "$3", "Chineseporcelain", "red", "ceramics");
-Product.products.push(Cup);
-var Plate = new Dishes("Plate", "$4", "Chineseporcelain", "seaShell", "porcelain");
-Product.products.push(Plate);
-
-//};
 
 
 
-Product.products.map();
-Product.showProducts();
 
+   /* var PillowCase = new Linens("Pillowcase", "$6", "Ottavapillows", "white", "50sm*70sm", "cotton");
+    Product.products.push(PillowCase);
+    var BedSheet = new Linens("Bedsheet", "$12", "Torontolinens", "beige", "Standart", "cotton");
+    Product.products.push(BedSheet);
+    var Cup = new Dishes("Cup", "$3", "Chineseporcelain", "red", "ceramics");
+    Product.products.push(Cup);
+    var Plate = new Dishes("Plate", "$4", "Chineseporcelain", "seaShell", "porcelain");
+    Product.products.push(Plate);*/
 
-// class example
-/*
- function Fruit(name, color) {
- this.name = name;
- this.color = color;
- }
+let products = Product.showProducts();
+document.body.innerHTML += products;
 
- Fruit.search = function(pattern) {
- var re = new RegExp(pattern);
- Fruit.fruits.forEach(function(fruit) {
- for (var key in fruit) {
- if (fruit[key].search(re) >= 0) {
- Fruit.filtered.push(fruit);
- }
- }
- })
- }
-
- Fruit.fruits = [];
- Fruit.filtered = [];
-
- Fruit.create = function(name, color) {
- var fruit = new Fruit(name, color);
- Fruit.fruits.push(fruit);
- return fruit;
- }
-
- Fruit.create("apple", "gold");
- Fruit.create("apple", "green");
- Fruit.create("banana", "gold");
- Fruit.search("app")
-
- console.log(Fruit.filtered)
- */
