@@ -165,7 +165,7 @@ Dishes.prototype.getName = function(){
     Product.products.push(Cup);
     var Plate = new Dishes("Plate", "$4", "Chineseporcelain", "seaShell", "porcelain");
     Product.products.push(Plate);*/
-
+var elem = document.getElementById('products');
 let products = Product.showProducts();
-document.body.innerHTML += products;
+elem.insertAdjacentHTML("afterBegin", products.join(" "));
 
