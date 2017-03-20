@@ -23,7 +23,7 @@ ul{
     margin: 0 auto;
 }
 .header-wrapper{
-    background-color: #ffffff;
+    background-color: #42bd77;
 }
 .footer-wrapper{
     background: url("../images/img-noise-100x100.png") repeat;
@@ -31,19 +31,30 @@ ul{
 .scnd-footer{
     background-color: #287347;
 }
-.main-wrapper>section{
+main>section{
     background: url("../images/img-noise-100x100.png") repeat;
 }
 
 /*-----------HEADER-----------*/
 
+.logo{
+    color: #ffffff;
+    font-family: 'Merienda', cursive;
+    font-size: 3rem;
+}
 
-nav{
-    background-color: #42bd77;
+nav li{
+    display: inline-block;
 }
 
 /*-----------MAIN-----------*/
 
+main h2{
+    margin: 0;
+}
 #products, #products a{
     color: #afafaf;
+}
+#products{
+    display: flex;
 }
