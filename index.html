@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=El+Messiri:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merienda:700" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
     <title>Ptrvch-shop</title>
 </head>
 <body>
@@ -20,11 +24,10 @@
         <nav>
             <div class="container">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Clothes</a></li>
-                    <li><a href="#">Linens</a></li>
-                    <li><a href="#">Dishes</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="a" href="products.html">Products List</a></li>
                     <li><a href="#">Contact us</a></li>
+                    <li><a class="a" href="cart.html">Cart</a></li>
                 </ul>
             </div>
         </nav>
@@ -37,7 +40,7 @@
                 <h2>Featured products</h2>
             </div>
         </section>
-        <div class="container">
+        <div class="container" id="products-container">
             <section id="products"></section>
             <div class="btnContainer"></div>
         </div>
@@ -60,6 +63,6 @@
         </div>
     </div>
 </div>
-<script src="js/main.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

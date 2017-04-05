@@ -4,6 +4,10 @@ html, body{
     font-size: 16px;
     color: #ffffff;
 }
+*{
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
 a{
     text-decoration: none;
     color: #ffffff;
@@ -38,13 +42,26 @@ main>section{
 /*-----------HEADER-----------*/
 
 .logo{
+    display: block;
     color: #ffffff;
     font-family: 'Merienda', cursive;
     font-size: 3rem;
+    padding: 7px 0;
 }
-
+nav ul{
+    display: flex;
+    justify-content: space-between;
+}
 nav li{
     display: inline-block;
+    padding: 10px 10px;
+}
+nav a{
+    font-size: 1.5rem;
+    padding: 0 10px;
+}
+nav a:hover{
+    border: 1px solid #ffffff;
 }
 
 /*-----------MAIN-----------*/
@@ -57,4 +74,35 @@ main h2{
 }
 #products{
     display: flex;
+    justify-content: space-between;
+    align-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+.prdctCard{
+    width: 25%;
+    border: 1px solid #afafaf;
+    border-bottom: 3px solid #42bd77;
+    margin-top: 100px;
+    padding: 25px;
+}
+.prdctCard button{
+    background-color: #42bd77;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    outline: none;
+    padding-top: 5px;
+}
+.btnContainer{
+    margin-bottom: 25px;
+}
+.btnContainer button{
+    background-color: #42bd77;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    outline: none;
+    padding-top: 5px;
+    margin-right: 3px;
 }

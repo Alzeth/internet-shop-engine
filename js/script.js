@@ -42,17 +42,17 @@ Dishes.create = (name, price, producer, color, material) => {
     var product3 = new Dishes(name, price, producer);
     Product.products.push(product3);
     return product3;
-}
+};
 Linens.create = (name, price, producer, color, size, material) => {
     var product2 = new Linens(name, price, producer);
     Product.products.push(product2);
     return product2;
-}
+};
 Cloth.create = (name, price, producer, size, print) => {
     var product = new Cloth(name, price, producer);
     Product.products.push(product);
     return product;
-}
+};
 // fabric method which shows products array in html
 Product.showProducts = function() {
     var pattern = /:price|:name|:description/gi;
@@ -61,24 +61,24 @@ Product.showProducts = function() {
         var replaces = {
             ":price": product.price,
             ":name": product.name
-        }
+        };
         return Product.config.templates.productCard.replace(pattern, (matched) => {
             return replaces[matched]
         })
     })
-}
+};
 //config with html template
 Product.config = {
     templates: {
         productCard: `
 <div class="prdctCard">
-    <a href="#"></a>
-    <a href="#" class="prdctName">:name</a>
+    <a class="a" href="productcard.html"><img src="" alt="#"></a>
+    <a class="a" href="productcard.html" class="prdctName">:name</a>
     <span class="prdctPrice">:price</span>
     <button>Buy me</button>
 </div>`
     }
-}
+};
 
 Cloth.create("Shirt", "$5", "Versace", "L", "SixEyes");
 Cloth.create("Pants", "$10", "D&G", "S", "Logo");
@@ -91,7 +91,7 @@ Dishes.create("Plate", "$4", "Chineseporcelain", "seaShell", "porcelain");
 
 Product.prototype.setName = function(){
     console.log(this.name + " setName");
-}
+};
 /*Product.prototype.getName = function(){
  return this.name;
  }
@@ -174,36 +174,36 @@ function Paginator(data) {
 }
 
 Paginator.config = {
-    perPage: 3,
+    perPage: 6,
     totalPages: null,
     currentPage: 1
-}
+};
 
 Paginator.init = function() {
     let prevBtn = document.createElement("button");
-    prevBtn.textContent = "<<<"
+    prevBtn.textContent = "<<";
     prevBtn.onclick = paginator.prev;
     let nextBtn = document.createElement("button");
-    nextBtn.textContent = ">>>"
+    nextBtn.textContent = ">>";
     nextBtn.onclick = paginator.next;
 
     /*    let buttons = document.createElement("span")
      buttons.appendChild(prevBtn);
      buttons.appendChild(nextBtn);*/
     Paginator.refresh();
-    btnContainer.appendChild(prevBtn)
+    btnContainer.appendChild(prevBtn);
     btnContainer.appendChild(nextBtn)
-}
+};
 
 Paginator.refresh = () => {
-    let paginatedItems = paginator.paginate()
-    elem.innerHTML = ""
+    let paginatedItems = paginator.paginate();
+    elem.innerHTML = "";
     paginatedItems.forEach((item) => {
         elem.insertAdjacentHTML("afterBegin", item)
     });
-    console.log("currentPage", Paginator.config.currentPage)
+    console.log("currentPage", Paginator.config.currentPage);
     //Paginator.init()
-}
+};
 
 Paginator.prototype.paginate = function() {
     let config = Paginator.config;
@@ -216,20 +216,25 @@ Paginator.prototype.paginate = function() {
             return item
         }
     })
-}
+};
 
 Paginator.prototype.next = function() {
-    console.log("<currentPage", Paginator.config.currentPage)
+    console.log("<currentPage", Paginator.config.currentPage);
+    if(Paginator.config.currentPage < (Paginator.config.currentPage)*(Paginator.config.perPage)){
     Paginator.config.currentPage++;
+    }
     Paginator.refresh();
     console.log(">currentPage", Paginator.config.currentPage)
-}
+};
 Paginator.prototype.prev = function() {
-    console.log("<currentPage", Paginator.config.currentPage)
+    console.log("<currentPage", Paginator.config.currentPage);
+    if(Paginator.config.currentPage > 1){
     Paginator.config.currentPage--;
+    }
     Paginator.refresh();
+
     console.log(">currentPage", Paginator.config.currentPage)
-}
+};
 
 
 
@@ -240,5 +245,17 @@ var elem = document.getElementById('products');
 let products = Product.showProducts();
 elem.insertAdjacentHTML("afterBegin", products.join(" "));
 var paginator = new Paginator(products);
-Paginator.init()
+Paginator.init();
+
+$(document).ready(() => {
+    $(".a").on("click", function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            success: (page) => {
+                $("#products-container").html(page)
+            }
+        })
+    })
+});
 
