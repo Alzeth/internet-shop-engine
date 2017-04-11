@@ -11,9 +11,9 @@ Product.filtered = [];
 
 //fabric method Search
 Product.search = function(pattern) {
-    var re = new RegExp(pattern);
+    let re = new RegExp(pattern);
     Product.products.forEach(function(product){
-        for (var key in product) {
+        for (let key in product) {
             if (product[key].search(re) >= 0) {
                 Product.filtered.push(product);
             }
@@ -22,18 +22,18 @@ Product.search = function(pattern) {
 };
 
 //next stage product prototype
-var Cloth = function (name, price, producer, size, print) {
+let Cloth = function (name, price, producer, size, print) {
     Product.apply(this, arguments);
     this.size = size;
     this.print = print;
 };
-var Linens = function (name, price, producer, color, size, material) {
+let Linens = function (name, price, producer, color, size, material) {
     Product.apply(this, arguments);
     this.color = color;
     this.size = size;
     this.material = material;
 };
-var Dishes = function (name, price, producer, color, material) {
+let Dishes = function (name, price, producer, color, material) {
     Product.apply(this, arguments);
     this.color = color;
     this.material = material;
@@ -248,12 +248,12 @@ var paginator = new Paginator(products);
 Paginator.init();
 
 $(document).ready(() => {
-    $(".a").on("click", function(e) {
+    $('.a').on("click", function(e) {
         e.preventDefault();
         $.ajax({
             url: $(this).attr('href'),
             success: (page) => {
-                $("#products-container").html(page)
+                $('#products-container').html(page)
             }
         })
     })

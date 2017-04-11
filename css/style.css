@@ -61,7 +61,8 @@ nav a{
     padding: 0 10px;
 }
 nav a:hover{
-    border: 1px solid #ffffff;
+    color: #287347;
+    background: #ffffff;
 }
 
 /*-----------MAIN-----------*/
